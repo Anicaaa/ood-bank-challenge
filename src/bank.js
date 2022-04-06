@@ -14,10 +14,21 @@ class Bank {
       transactionType: "deposit",
     };
     this.transactions.push(firstTransaction);
-    console.log(this.transactions);
     return true;
   }
-  withdrawal() {}
+  withdrawal(amountWithdrawn, dateWithdrawn) {
+    if (amountWithdrawn <= 0) {
+      return false;
+    }
+
+    const secondTransaction = {
+      amount: amountWithdrawn,
+      date: dateWithdrawn,
+      transactionType: "withdrawal",
+    };
+    this.transactions.push(secondTransaction);
+    return true;
+  }
   bankStatement() {}
 }
 

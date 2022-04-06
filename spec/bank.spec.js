@@ -28,4 +28,32 @@ describe("Bank class", () => {
     expect(result).toEqual(false);
     expect(account.transactions).toEqual(objectList);
   });
+
+  it("should accept my first withdrawal in bank account and save it in the transaction list", () => {
+    //set up
+    const account = new Bank();
+    //execute
+    const objectList = [
+      {
+        amount: 50,
+        date: "10-04-2022",
+        transactionType: "withdrawal",
+      },
+    ];
+    const result = account.withdrawal(50, "10-04-2022");
+    //verify
+    expect(result).toEqual(true);
+    expect(account.transactions).toEqual(objectList);
+  });
+
+  it("should reject my first withdrawal if tryong to get 0 or less", () => {
+    //set up
+    const account = new Bank(); //
+    //execute
+    const objectList = [];
+    const result = account.withdrawal(0, "10-04-2022");
+    //verify
+    expect(result).toEqual(false);
+    expect(account.transactions).toEqual(objectList);
+  });
 });
