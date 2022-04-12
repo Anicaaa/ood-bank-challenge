@@ -88,4 +88,16 @@ describe("Bank class", () => {
     expect(result).toEqual(false);
     expect(account.transactions).toEqual(objectList);
   });
+
+  it("should print out a list of all transactions", () => {
+    //set up
+    const account = new Bank();
+    account.deposit(100, "12/12/2022");
+    account.withdrawal(80, "14/12/2022");
+    //execute
+    const expected = ["12/12/2022 | 100 | 100", "14/12/2022 | -80 | 20"];
+    const result = account.bankStatement();
+    //verify
+    expect(result).toEqual(expected);
+  });
 });

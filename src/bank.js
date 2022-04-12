@@ -54,7 +54,27 @@ class Bank {
     return total;
   }
 
-  bankStatement() {}
+  bankStatement(transactionOne, transactionTwo) {
+    // here it should contain two parameters of amount and date. Todo: Change later.
+    const myDeposit = transactionOne;
+    const myWithdrawal = transactionTwo;
+    const currentBalance = `{$myDeposit} + {$myWithdrawal}`;
+    for (let i = 0; this.transactions.length; i++) {
+      const something = this.transactions[i];
+      something.push(currentBalance);
+    }
+    return currentBalance;
+    // Create a variable to store each of the strings I want to print out.
+    // create a variable to store the current balance after each transaction
+    // Iterate over the transactions (use a for loop)
+    // Create a string that I want to print out for that transaction.
+    // Push this.transactions array
+    // return the list of strings to print.
+    // date, amount, total balance.
+    // I want a statement on paper that shows me a summary of the transactions
+    // how do i get from: [{amount: 100, type: "deposit"}, {amount:80, type:'withdraw'}]
+    // to: ['12/12/2022 | 100 | 100', '14/12/2022 | -80 | 20']
+  }
 }
 
 module.exports = Bank;
