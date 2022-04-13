@@ -94,8 +94,10 @@ describe("Bank class", () => {
     const account = new Bank();
     account.deposit(100, "12/12/2022");
     account.withdrawal(80, "14/12/2022");
+    //console.log(account.transactions);
     //execute
-    const expected = ["12/12/2022 | 100 | 100", "14/12/2022 | -80 | 20"];
+    const expected = ["12/12/2022 | 100", "14/12/2022 | -80"];
+    //const expected = ["12/12/2022 | 100 | 100", "14/12/2022 | -80 | 20"];
     const result = account.bankStatement();
     //verify
     expect(result).toEqual(expected);

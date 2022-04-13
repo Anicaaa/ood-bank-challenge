@@ -54,26 +54,27 @@ class Bank {
     return total;
   }
 
-  bankStatement(transactionOne, transactionTwo) {
-    // here it should contain two parameters of amount and date. Todo: Change later.
-    const myDeposit = transactionOne;
-    const myWithdrawal = transactionTwo;
-    const currentBalance = `{$myDeposit} + {$myWithdrawal}`;
-    for (let i = 0; this.transactions.length; i++) {
-      const something = this.transactions[i];
-      something.push(currentBalance);
+  bankStatement() {
+    let statement = [];
+    for (let i = 0; i < this.transactions.length; i++) {
+      const transaction = this.transactions[i];
+      //console.log(i, transaction);
+
+      //If the transaction.transactionType is whitdrawal then the string needs a negative amount else...
+      //... positive amount
+
+      if (transaction.transactionType === "withdrawal") {
+        //If the transaction.transactionType is whitdrawal then the string needs a negative amount else...
+        //... negative amount
+        const negativeAmount = 0 - transaction.amount;
+        const transactionAsString = `${transaction.date} | ${negativeAmount}`;
+        statement.push(transactionAsString);
+      } else {
+        const transactionAsString = `${transaction.date} | ${transaction.amount}`;
+        statement.push(transactionAsString);
+      }
     }
-    return currentBalance;
-    // Create a variable to store each of the strings I want to print out.
-    // create a variable to store the current balance after each transaction
-    // Iterate over the transactions (use a for loop)
-    // Create a string that I want to print out for that transaction.
-    // Push this.transactions array
-    // return the list of strings to print.
-    // date, amount, total balance.
-    // I want a statement on paper that shows me a summary of the transactions
-    // how do i get from: [{amount: 100, type: "deposit"}, {amount:80, type:'withdraw'}]
-    // to: ['12/12/2022 | 100 | 100', '14/12/2022 | -80 | 20']
+    return statement;
   }
 }
 
